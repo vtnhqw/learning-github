@@ -1,0 +1,38 @@
+# ══════════════════════════════════════════
+#  CD — Change Directory
+# ══════════════════════════════════════════
+# `cd` = how you navigate between folders in
+# terminal, like clicking folders in File Explorer
+#
+# 📁 Analogy:
+# Computer = building with rooms (folders)
+# cd = how you walk from room to room
+#
+# ──────────────────────────────────────────
+#  BASIC USAGE
+# ──────────────────────────────────────────
+cd Desktop                          # go into a folder
+cd Desktop/my-project               # go into folder inside folder
+cd ..                               # go BACK one folder
+cd ~                                # go back to home
+
+# ──────────────────────────────────────────
+#  WINDOWS EXAMPLE
+# ──────────────────────────────────────────
+cd C:\Users\Hakimi\Desktop\website-hakimi   # go to project folder
+git status                          # then run git commands here
+git push
+
+# ──────────────────────────────────────────
+#  HOW TO KNOW WHERE YOU ARE
+# ──────────────────────────────────────────
+cd                                  # Windows — shows current folder
+pwd                                 # Mac/Linux — shows current folder
+
+# ──────────────────────────────────────────
+#  ⚠️ IMPORTANT RULE
+# ──────────────────────────────────────────
+# Always cd into your project folder FIRST
+# before running any git commands!
+# git add / git push only work inside the correct folder
+# ══════════════════════════════════════════

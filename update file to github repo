@@ -1,0 +1,11 @@
+# Step 1 - go to your folder
+cd C:\Users\adamh\Downloads\earningsradar
+
+# Step 2 - stage files
+git add .
+
+# Step 3 - save snapshot
+git commit -m "what you changed"
+
+# Step 4 - upload to GitHub
+git push

@@ -1,11 +1,116 @@
-# Step 1 - go to your folder
-cd C:\Users\adamh\Downloads\earningsradar
+# Git + GitHub Deploy Workflow
 
-# Step 2 - stage files
+A personal reference for editing and deploying a blog via GitHub Actions.
+
+---
+
+## How it works
+
+```
+GitHub Repo → clone to PC → edit in VS Code → git push → auto deploy ✅
+```
+
+---
+
+## First-time setup (do this once only)
+
+### 1. Clone the repo to your PC
+
+```bash
+git clone https://github.com/your-username/your-blog-repo.git
+```
+
+This downloads the entire repo into a folder on your computer.
+
+### 2. Open the folder in VS Code
+
+```bash
+cd your-blog-repo
+code .
+```
+
+> Or drag the folder into VS Code manually.
+
+---
+
+## Every editing session
+
+### Step 1 — Pull the latest changes before you start
+
+```bash
+git pull origin main
+```
+
+### Step 2 — Edit your files
+
+| File | What to edit |
+|------|-------------|
+| `style.css` | Colours, fonts, layout tweaks |
+| `index.html` | Page structure and content |
+
+Save with `Ctrl + S` as usual.
+
+### Step 3 — Push your changes
+
+Open the terminal in VS Code with `` Ctrl + ` `` (backtick), then run:
+
+```bash
 git add .
+git commit -m "describe what you changed"
+git push origin main
+```
 
-# Step 3 - save snapshot
-git commit -m "what you changed"
+### Step 4 — Watch the deploy
 
-# Step 4 - upload to GitHub
-git push
+Go to your repo on GitHub → **Actions** tab.  
+GitHub Actions triggers automatically and your live site updates in **~1–2 minutes**.
+
+---
+
+## Full session in one block (copy-paste ready)
+
+```bash
+# Before editing
+git pull origin main
+
+# After editing
+git add .
+git commit -m "your message here"
+git push origin main
+```
+
+---
+
+## VS Code shortcut (no terminal needed)
+
+Use the **Source Control panel** (branch icon on the left sidebar) to:
+- Stage files (the `+` button)
+- Write a commit message
+- Click **Commit** then **Sync / Push**
+
+No commands required — just clicking buttons.
+
+---
+
+## Quick glossary
+
+| Term | Meaning |
+|------|---------|
+| `git clone` | Download a repo to your PC for the first time |
+| `git pull` | Sync your local copy with the latest from GitHub |
+| `git add .` | Stage all changed files, ready to commit |
+| `git commit -m "..."` | Save a snapshot of your changes with a message |
+| `git push` | Upload your commits to GitHub |
+| GitHub Actions | Auto-runs deploy script when you push to `main` |
+
+---
+
+## Next step
+
+Set up `deploy.yml` in your repo so auto-deploy is configured and ready.
+
+```
+.github/
+└── workflows/
+    └── deploy.yml
+```

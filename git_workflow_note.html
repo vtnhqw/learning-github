@@ -1,0 +1,105 @@
+
+<style>
+  .note { font-family: var(--font-sans); padding: 1.5rem 0; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 99px; }
+  .badge-teal { background: #E1F5EE; color: #0F6E56; }
+  .badge-amber { background: #FAEEDA; color: #854F0B; }
+  .badge-blue { background: #E6F1FB; color: #185FA5; }
+  .step-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .step-row:last-child { border-bottom: none; }
+  .step-num { width: 24px; height: 24px; min-width: 24px; border-radius: 50%; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-top: 2px; }
+  .step-body { flex: 1; }
+  .step-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 4px; }
+  .step-desc { font-size: 13px; color: var(--color-text-secondary); margin: 0 0 6px; }
+  code { font-family: var(--font-mono); font-size: 12px; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 4px; padding: 2px 6px; color: var(--color-text-primary); }
+  pre { font-family: var(--font-mono); font-size: 12px; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 6px; padding: 10px 12px; color: var(--color-text-primary); margin: 6px 0 0; overflow-x: auto; line-height: 1.6; }
+  .flow { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin: 1rem 0; }
+  .flow-node { font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 6px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-primary); background: var(--color-background-primary); }
+  .flow-arrow { color: var(--color-text-tertiary); font-size: 13px; }
+  .section-title { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 1.5rem 0 0.75rem; }
+  .tip-box { background: var(--color-background-secondary); border-radius: 6px; border: 0.5px solid var(--color-border-tertiary); padding: 10px 12px; font-size: 13px; color: var(--color-text-secondary); margin-top: 1rem; }
+  .tip-box strong { color: var(--color-text-primary); }
+</style>
+
+<div class="note">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:1.25rem;">
+    <span style="font-size:18px;font-weight:500;color:var(--color-text-primary);">Git + GitHub deploy workflow</span>
+    <span class="badge badge-teal">reference</span>
+  </div>
+
+  <div class="flow">
+    <div class="flow-node">GitHub repo</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-node">clone to PC</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-node">edit in VS Code</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-node">git push</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-node" style="border-color:#1D9E75;color:#0F6E56;">live site ✓</div>
+  </div>
+
+  <div class="section-title">Steps</div>
+
+  <div class="step-row">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <p class="step-title">Clone — do this once only</p>
+      <pre>git clone https://github.com/your-username/your-blog-repo.git</pre>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <p class="step-title">Open in VS Code</p>
+      <pre>cd your-blog-repo
+code .</pre>
+      <p class="step-desc" style="margin-top:4px;">Or drag the folder into VS Code manually.</p>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <p class="step-title">Edit your files</p>
+      <p class="step-desc"><code>style.css</code> for UX · <code>index.html</code> for layout · save with <code>Ctrl+S</code></p>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <p class="step-title">Push to GitHub</p>
+      <p class="step-desc">Open terminal in VS Code with <code>Ctrl + `</code></p>
+      <pre>git add .
+git commit -m "updated blog header style"
+git push origin main</pre>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <p class="step-title">Auto-deploy fires <span class="badge badge-teal" style="margin-left:4px;">~1–2 min</span></p>
+      <p class="step-desc">GitHub Actions triggers automatically. Watch it: repo → <strong>Actions</strong> tab.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Every editing session</div>
+  <pre>git pull origin main     # get latest before editing
+
+# ... make your changes ...
+
+git add .
+git commit -m "what you changed"
+git push origin main</pre>
+
+  <div class="tip-box" style="margin-top:1rem;">
+    <strong>VS Code shortcut</strong> — Use the Source Control panel (branch icon, left sidebar) to stage, commit, and push with clicks instead of terminal commands.
+  </div>
+
+  <div class="tip-box" style="margin-top:8px;">
+    <strong>Next step</strong> — Set up <code>deploy.yml</code> in your repo so auto-deploy is ready to go.
+  </div>
+</div>

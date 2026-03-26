@@ -1,0 +1,264 @@
+## All Basic Git & GitHub Commands
+
+---
+
+### 🔧 Setup (First Time)
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@email.com"
+
+# Check your config
+git config --list
+```
+
+---
+
+### 📁 Starting a Repo
+```bash
+# Start a new repo in current folder
+git init
+
+# Clone an existing repo from GitHub
+git clone https://github.com/username/repo-name.git
+
+# Clone into a specific folder name
+git clone https://github.com/username/repo.git my-folder
+```
+
+---
+
+### 📝 Staging & Committing
+```bash
+# Check what's changed
+git status
+
+# Stage a specific file
+git add filename.js
+
+# Stage everything
+git add .
+
+# Commit staged files
+git commit -m "your message"
+
+# Stage + commit tracked files in one step
+git commit -am "your message"
+
+# Fix last commit message (before pushing)
+git commit --amend -m "corrected message"
+```
+
+---
+
+### 🌿 Branches
+```bash
+# See all branches
+git branch
+
+# Create a new branch
+git branch feature-login
+
+# Switch to a branch
+git checkout feature-login
+
+# Create + switch in one step (most common)
+git checkout -b feature-login
+
+# Modern way to switch
+git switch feature-login
+
+# Delete a branch (after merging)
+git branch -d feature-login
+
+# Force delete a branch
+git branch -D feature-login
+```
+
+---
+
+### 🔀 Merging & Rebasing
+```bash
+# Merge a branch into current branch
+git merge feature-login
+
+# Rebase current branch onto main
+git rebase main
+
+# Abort a merge conflict
+git merge --abort
+```
+
+---
+
+### 🌐 Remote (GitHub)
+```bash
+# Connect local repo to GitHub
+git remote add origin https://github.com/username/repo.git
+
+# See connected remotes
+git remote -v
+
+# Push to GitHub
+git push origin main
+
+# Push a new branch to GitHub
+git push -u origin feature-login
+
+# Pull latest changes from GitHub
+git pull origin main
+
+# Fetch changes without merging
+git fetch origin
+```
+
+---
+
+### 📜 Viewing History
+```bash
+# Full commit history
+git log
+
+# Clean one-line history
+git log --oneline
+
+# Visual branch graph
+git log --oneline --graph --all
+
+# Last 5 commits
+git log -5
+
+# See changes in a specific commit
+git show a1b2c3d
+```
+
+---
+
+### 🔍 Comparing Changes
+```bash
+# See unstaged changes
+git diff
+
+# See staged changes (before commit)
+git diff --staged
+
+# Compare two branches
+git diff main..feature-login
+```
+
+---
+
+### ↩️ Undoing Things
+```bash
+# Unstage a file (keep changes)
+git restore --staged filename.js
+
+# Discard changes in a file (permanent!)
+git restore filename.js
+
+# Undo last commit (keep changes staged)
+git reset --soft HEAD~1
+
+# Undo last commit (keep changes unstaged)
+git reset --mixed HEAD~1
+
+# Undo last commit (delete changes permanently!)
+git reset --hard HEAD~1
+
+# Revert a commit (safe, creates new commit)
+git revert a1b2c3d
+```
+
+---
+
+### 🗃️ Stashing (Save Work Temporarily)
+```bash
+# Stash current changes
+git stash
+
+# See all stashes
+git stash list
+
+# Apply last stash
+git stash pop
+
+# Apply a specific stash
+git stash apply stash@{2}
+
+# Drop a stash
+git stash drop stash@{0}
+```
+
+---
+
+### 🏷️ Tags
+```bash
+# Create a tag
+git tag v1.0.0
+
+# Create an annotated tag
+git tag -a v1.0.0 -m "version 1.0.0"
+
+# Push tags to GitHub
+git push origin --tags
+
+# List all tags
+git tag
+```
+
+---
+
+### 🧹 Cleaning Up
+```bash
+# Remove untracked files (dry run first!)
+git clean -n
+
+# Actually remove untracked files
+git clean -f
+
+# Remove untracked files + folders
+git clean -fd
+```
+
+---
+
+### 🚀 Typical Daily Workflow
+```bash
+# 1. Pull latest
+git pull origin main
+
+# 2. Create a branch
+git checkout -b feature-something
+
+# 3. Make changes, then stage + commit
+git add .
+git commit -m "feat: add something"
+
+# 4. Push branch to GitHub
+git push -u origin feature-something
+
+# 5. Open a Pull Request on GitHub, merge, done!
+```
+
+---
+
+### 💡 Quick Reference Card
+
+| Command | What it does |
+|---|---|
+| `git init` | Start a new repo |
+| `git clone` | Copy a repo |
+| `git status` | See current changes |
+| `git add .` | Stage everything |
+| `git commit -m` | Save a snapshot |
+| `git push` | Upload to GitHub |
+| `git pull` | Download from GitHub |
+| `git branch` | List branches |
+| `git checkout -b` | New branch |
+| `git merge` | Combine branches |
+| `git log --oneline` | View history |
+| `git stash` | Save work temporarily |
+| `git reset --soft` | Undo commit (keep changes) |
+
+---
+
+Bookmark this and you'll have everything you need for 95% of daily Git work! Want me to explain any command in more detail?
